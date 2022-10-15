@@ -11,7 +11,7 @@ add_files mm.cpp
 add_files -tb mm_test.cpp
 
 # open HLS solution solution1
-open_solution "solution1"
+open_solution "solution3"
 # set target FPGA device: Alveo U50 in this example
 set_part {xcu50-fsvh2104-2-e}
 # target clock period is 5 ns, i.e., 200MHz
