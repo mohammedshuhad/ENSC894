@@ -1,0 +1,136 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2.2 (64-bit)
+  **** SW Build 3118627 on Tue Feb  9 05:13:49 MST 2021
+  **** IP Build 3115676 on Tue Feb  9 10:48:11 MST 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'msa325' on host 'ensc-mmc-13.engineering.sfu.ca' (Linux_x86_64 version 5.4.0-125-generic) on Fri Oct 14 20:56:22 PDT 2022
+INFO: [HLS 200-10] On os Ubuntu 18.04.6 LTS
+INFO: [HLS 200-10] In directory '/local-scratch/localhome/msa325/lab3'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project mm.prj -reset 
+INFO: [HLS 200-10] Opening and resetting project '/local-scratch/localhome/msa325/lab3/mm.prj'.
+WARNING: [HLS 200-40] No /local-scratch/localhome/msa325/lab3/mm.prj/solution1/solution1.aps file found.
+INFO: [HLS 200-1510] Running: set_top mm 
+INFO: [HLS 200-1510] Running: add_files mm.cpp 
+INFO: [HLS 200-10] Adding design file 'mm.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb mm_test.cpp 
+INFO: [HLS 200-10] Adding test bench file 'mm_test.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 
+INFO: [HLS 200-10] Creating and opening solution '/local-scratch/localhome/msa325/lab3/mm.prj/solution1'.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcu50-fsvh2104-2-e 
+INFO: [HLS 200-10] Setting target device to 'xcu50-fsvh2104-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 3 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 3ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../mm_test.cpp in debug mode
+   Compiling ../../../../mm.cpp in debug mode
+   Generating csim.exe
+TEST PASSED!
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 3339.52 seconds. CPU system time: 0.45 seconds. Elapsed time: 3339.69 seconds; current allocated memory: 211.879 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 212.083 MB.
+INFO: [HLS 200-10] Analyzing design file 'mm.cpp' ... 
+WARNING: [HLS 207-5301] unused parameter 'i': mm.cpp:94:76
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.17 seconds. CPU system time: 0.24 seconds. Elapsed time: 0.56 seconds; current allocated memory: 213.220 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'load_A(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'load_C(float*, float*, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'load_B(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'compute(float*, float*, float*, int, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'store(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.32 seconds. CPU system time: 0.34 seconds. Elapsed time: 3.79 seconds; current allocated memory: 215.017 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 215.018 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 216.324 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 215.534 MB.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:62) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:78) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:70) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'MULT_LOOP' (mm.cpp:96) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:87) in function 'mm' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 236.054 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'INNER_LOOP' (mm.cpp:113:10) in function 'mm' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+WARNING: [HLS 200-960] Cannot flatten loop 'OUTER_LOOP' (mm.cpp:113:7) in function 'mm' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+INFO: [HLS 200-472] Inferring partial write operation for 'A_buff' (mm.cpp:64:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:80:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'B_buff' (mm.cpp:73:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:98:19)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 228.852 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mm' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'COPY_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'COPY_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'COPY_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'MULT_LOOP'.
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 1) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 2) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 3) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 4) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 7) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+WARNING: [HLS 200-881] Unable to enforce a carried constraint (II = 8) between 'fadd' operation ('add_i', mm.cpp:98) and 'fadd' operation ('add_i', mm.cpp:98).
+Resolution: For help on HLS 200-881 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-881.html
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 9, Depth = 22, loop 'MULT_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'COPY_LOOP'
+WARNING: [HLS 200-871] Estimated clock period (3.212ns) exceeds the target (target clock period: 3ns, clock uncertainty: 0.81ns, effective delay budget: 2.19ns).
+Resolution: For help on HLS 200-871 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-871.html
+WARNING: [HLS 200-1016] The critical path in module 'mm' consists of the following:	'fadd' operation ('add_i', mm.cpp:98) [129]  (1.61 ns)
+	'phi' operation ('add2_i', mm.cpp:98) with incoming values : ('C_buff_load', mm.cpp:98) ('add_i', mm.cpp:98) [114]  (0 ns)
+	'fadd' operation ('add_i', mm.cpp:98) [129]  (1.61 ns)
+
+Resolution: For help on HLS 200-1016 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1016.html
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.16 seconds; current allocated memory: 229.509 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 230.103 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/alpha' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/beta' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mm' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_10_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_5_max_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mm'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.16 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 231.373 MB.
+INFO: [RTMG 210-278] Implementing memory 'mm_A_buff_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1.07 seconds. CPU system time: 0.04 seconds. Elapsed time: 1.12 seconds; current allocated memory: 240.732 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for mm.
+INFO: [VLOG 209-307] Generating Verilog RTL for mm.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 311.33 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5.33 seconds. CPU system time: 0.64 seconds. Elapsed time: 6.26 seconds; current allocated memory: 240.954 MB.
+INFO: [HLS 200-112] Total CPU user time: 3346.89 seconds. Total CPU system time: 1.62 seconds. Total elapsed time: 3347.65 seconds; peak allocated memory: 240.732 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Fri Oct 14 21:52:09 2022...

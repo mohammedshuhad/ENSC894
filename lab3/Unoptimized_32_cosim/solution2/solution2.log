@@ -1,0 +1,93 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2.2 (64-bit)
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcu50-fsvh2104-2-e 
+INFO: [HLS 200-10] Setting target device to 'xcu50-fsvh2104-2-e'
+INFO: [HLS 200-1510] Running: create_clock -period 3.33 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.54 seconds. CPU system time: 0.37 seconds. Elapsed time: 0.55 seconds; current allocated memory: 211.863 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 212.083 MB.
+INFO: [HLS 200-10] Analyzing design file 'mm.cpp' ... 
+WARNING: [HLS 207-5301] unused parameter 'i': mm.cpp:94:70
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.18 seconds. CPU system time: 0.25 seconds. Elapsed time: 0.56 seconds; current allocated memory: 213.204 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'load_A(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'load_C(float*, float*, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'load_B(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'compute(float*, float*, float*, int, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 214-178] Inlining function 'store(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:104:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.3 seconds. CPU system time: 0.33 seconds. Elapsed time: 3.74 seconds; current allocated memory: 215.001 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 215.002 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 216.308 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 215.517 MB.
+INFO: [XFORM 203-510] Pipelining loop 'INNER_LOOP' (mm.cpp:113) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:62) in function 'mm' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'COPY_LOOP' (mm.cpp:78) in function 'mm' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'INNER_LOOP' (mm.cpp:113) in function 'mm' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP' (mm.cpp:70) in function 'mm' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'MULT_LOOP' (mm.cpp:96) in function 'mm' completely with a factor of 32.
+INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP' (mm.cpp:87) in function 'mm' completely with a factor of 32.
+INFO: [XFORM 203-102] Partitioning array 'B_buff' (mm.cpp:106) automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.12 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.13 seconds; current allocated memory: 236.961 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'OUTER_LOOP' (mm.cpp:113:7) in function 'mm' more than one sub loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'A_buff' (mm.cpp:64:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:80:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:98:19)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.11 seconds; current allocated memory: 232.471 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mm' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'C_buff'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'COPY_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'COPY_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'INNER_LOOP'.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('B_load_2', mm.cpp:73) on array 'B' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'B'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 16, Depth = 248, loop 'INNER_LOOP'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.23 seconds. CPU system time: 0 seconds. Elapsed time: 1.24 seconds; current allocated memory: 235.191 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.4 seconds. CPU system time: 0 seconds. Elapsed time: 1.4 seconds; current allocated memory: 239.079 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/alpha' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/beta' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mm' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_7_full_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_4_max_dsp_1': 32 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mm'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.02 seconds; current allocated memory: 244.174 MB.
+INFO: [RTMG 210-278] Implementing memory 'mm_A_buff_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mm_C_buff_ram (RAM_1WnR)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 2.58 seconds. CPU system time: 0.08 seconds. Elapsed time: 2.67 seconds; current allocated memory: 261.658 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for mm.
+INFO: [VLOG 209-307] Generating Verilog RTL for mm.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 358.89 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 10.03 seconds. CPU system time: 0.69 seconds. Elapsed time: 11 seconds; current allocated memory: 261.967 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302]
