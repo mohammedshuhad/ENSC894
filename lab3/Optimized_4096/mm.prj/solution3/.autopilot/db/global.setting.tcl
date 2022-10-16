@@ -1,6 +1,6 @@
 
 set TopModule "mm"
-set ClockPeriod 3
+set ClockPeriod 3.3
 set ClockList ap_clk
 set HasVivadoClockPeriod 0
 set CombLogicFlag 0

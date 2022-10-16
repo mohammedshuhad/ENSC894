@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'mm'" level="0">
-<item name = "Date">Sat Oct 15 01:04:12 2022
+<item name = "Date">Sat Oct 15 14:09:41 2022
 </item>
 <item name = "Version">2020.2.2 (Build 3118627 on Tue Feb  9 05:13:49 MST 2021)</item>
 <item name = "Project">mm.prj</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">3.00 ns, 3.212 ns, 0.81 ns</column>
+<column name="ap_clk">3.30 ns, 2.322 ns, 0.89 ns</column>
 </table>
 </item>
 </section>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">11836339201, 11836339201, 38.018 sec, 38.018 sec, 11836339202, 11836339202, none</column>
+<column name="">11675649, 11675649, 38.530 ms, 38.530 ms, 11675650, 11675650, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -35,13 +35,10 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- OUTER_LOOP">11836339200, 11836339200, 11558925, -, -, 1024, no</column>
-<column name=" + LOAD_LOOP_A">1025, 1025, 3, 1, 1, 1024, yes</column>
-<column name=" + LOAD_LOOP_C">1030, 1030, 8, 1, 1, 1024, yes</column>
-<column name=" + INNER_LOOP">11556864, 11556864, 11286, -, -, 1024, no</column>
-<column name="  ++ LOAD_LOOP_B">1025, 1025, 3, 1, 1, 1024, yes</column>
-<column name="  ++ COMPUTE_LOOP">9228, 9228, 22, 9, 1, 1024, yes</column>
-<column name="  ++ STORE_LOOP">1025, 1025, 3, 1, 1, 1024, yes</column>
+<column name="- OUTER_LOOP">11675648, 11675648, 91216, -, -, 128, no</column>
+<column name=" + LOAD_LOOP_A">128, 128, 2, 1, 1, 128, yes</column>
+<column name=" + LOAD_LOOP_C">134, 134, 7, 1, 1, 128, yes</column>
+<column name=" + INNER_LOOP">90880, 90880, 710, -, -, 128, no</column>
 </table>
 </item>
 </section>

@@ -55,6 +55,34 @@
           "name": "C_q0",
           "usage": "data",
           "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "C_address1",
+          "name": "C_address1",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "C_ce1",
+          "name": "C_ce1",
+          "usage": "control",
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "C_we1",
+          "name": "C_we1",
+          "usage": "control",
+          "direction": "inout"
+        },
+        {
+          "type": "port",
+          "interface": "C_d1",
+          "name": "C_d1",
+          "usage": "data",
+          "direction": "out"
         }
       ]
     },
@@ -113,6 +141,27 @@
           "name": "B_q0",
           "usage": "data",
           "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "B_address1",
+          "name": "B_address1",
+          "usage": "address",
+          "direction": "out"
+        },
+        {
+          "type": "port",
+          "interface": "B_ce1",
+          "name": "B_ce1",
+          "usage": "control",
+          "direction": "in"
+        },
+        {
+          "type": "port",
+          "interface": "B_q1",
+          "name": "B_q1",
+          "usage": "data",
+          "direction": "in"
         }
       ]
     },
@@ -152,13 +201,13 @@
   },
   "ClockInfo": {
     "ClockName": "ap_clk",
-    "ClockPeriod": "3",
-    "Uncertainty": "0.81",
+    "ClockPeriod": "3.3",
+    "Uncertainty": "0.891",
     "IsCombinational": "0",
     "II": "x",
-    "Latency": "11836339201"
+    "Latency": "11675649"
   },
-  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 3.000 [get_ports ap_clk]"]},
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 3.300 [get_ports ap_clk]"]},
   "Ipx": {
     "Vendor": "xilinx.com",
     "Library": "hls",
@@ -175,20 +224,22 @@
     "CSource": ["..\/..\/mm.cpp"],
     "Vhdl": [
       "impl\/vhdl\/mm_A_buff.vhd",
-      "impl\/vhdl\/mm_fadd_32ns_32ns_32_10_full_dsp_1.vhd",
-      "impl\/vhdl\/mm_fmul_32ns_32ns_32_5_max_dsp_1.vhd",
+      "impl\/vhdl\/mm_fadd_32ns_32ns_32_5_no_dsp_1.vhd",
+      "impl\/vhdl\/mm_fmul_32ns_32ns_32_4_max_dsp_1.vhd",
+      "impl\/vhdl\/mm_mux_1287_32_1_1.vhd",
       "impl\/vhdl\/mm.vhd"
     ],
     "Verilog": [
       "impl\/verilog\/mm_A_buff.v",
-      "impl\/verilog\/mm_fadd_32ns_32ns_32_10_full_dsp_1.v",
-      "impl\/verilog\/mm_fmul_32ns_32ns_32_5_max_dsp_1.v",
+      "impl\/verilog\/mm_fadd_32ns_32ns_32_5_no_dsp_1.v",
+      "impl\/verilog\/mm_fmul_32ns_32ns_32_4_max_dsp_1.v",
+      "impl\/verilog\/mm_mux_1287_32_1_1.v",
       "impl\/verilog\/mm.v"
     ],
     "IpMisc": ["impl\/misc\/logo.png"],
     "Subcore": [
-      "impl\/misc\/mm_ap_fadd_8_full_dsp_32_ip.tcl",
-      "impl\/misc\/mm_ap_fmul_3_max_dsp_32_ip.tcl"
+      "impl\/misc\/mm_ap_fadd_3_no_dsp_32_ip.tcl",
+      "impl\/misc\/mm_ap_fmul_2_max_dsp_32_ip.tcl"
     ],
     "DesignXml": ".autopilot\/db\/mm.design.xml",
     "DebugDir": ".debug",
@@ -199,14 +250,14 @@
     "HasClockedDsp": false,
     "Ip": [
       {
-        "Name": "mm_ap_fadd_8_full_dsp_32",
+        "Name": "mm_ap_fadd_3_no_dsp_32",
         "Vlnv": "xilinx.com:ip:floating_point:7.1",
-        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 8 CONFIG.c_mult_usage Full_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name mm_ap_fadd_8_full_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Add CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 3 CONFIG.c_mult_usage No_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name mm_ap_fadd_3_no_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Add_Subtract CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
       },
       {
-        "Name": "mm_ap_fmul_3_max_dsp_32",
+        "Name": "mm_ap_fmul_2_max_dsp_32",
         "Vlnv": "xilinx.com:ip:floating_point:7.1",
-        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 3 CONFIG.c_mult_usage Max_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name mm_ap_fmul_3_max_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Multiply CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
+        "Params": "CONFIG.a_precision_type Single CONFIG.a_tuser_width 1 CONFIG.add_sub_value Both CONFIG.b_tuser_width 1 CONFIG.c_a_exponent_width 8 CONFIG.c_a_fraction_width 24 CONFIG.c_compare_operation Programmable CONFIG.c_has_divide_by_zero false CONFIG.c_has_invalid_op false CONFIG.c_has_overflow false CONFIG.c_has_underflow false CONFIG.c_latency 2 CONFIG.c_mult_usage Max_Usage CONFIG.c_optimization Speed_Optimized CONFIG.c_rate 1 CONFIG.c_result_exponent_width 8 CONFIG.c_result_fraction_width 24 CONFIG.component_name mm_ap_fmul_2_max_dsp_32 CONFIG.flow_control NonBlocking CONFIG.has_a_tlast false CONFIG.has_a_tuser false CONFIG.has_aclken true CONFIG.has_aresetn false CONFIG.has_b_tlast false CONFIG.has_b_tuser false CONFIG.has_operation_tlast false CONFIG.has_operation_tuser false CONFIG.has_result_tready false CONFIG.maximum_latency false CONFIG.operation_tuser_width 1 CONFIG.operation_type Multiply CONFIG.result_precision_type Single CONFIG.result_tlast_behv Null"
       }
     ]
   },
@@ -215,7 +266,7 @@
       "type": "data",
       "busTypeName": "data",
       "mode": "master",
-      "dataWidth": "20",
+      "dataWidth": "14",
       "portMap": {"A_address0": "DATA"},
       "ports": ["A_address0"],
       "constraints": [{
@@ -290,9 +341,23 @@
       "type": "data",
       "busTypeName": "data",
       "mode": "master",
-      "dataWidth": "20",
+      "dataWidth": "14",
       "portMap": {"B_address0": "DATA"},
       "ports": ["B_address0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "B"
+        }]
+    },
+    "B_address1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "14",
+      "portMap": {"B_address1": "DATA"},
+      "ports": ["B_address1"],
       "constraints": [{
           "constraint_type": "pragma interface",
           "mode": "ap_memory",
@@ -307,6 +372,20 @@
       "dataWidth": "32",
       "portMap": {"B_q0": "DATA"},
       "ports": ["B_q0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "B"
+        }]
+    },
+    "B_q1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "slave",
+      "dataWidth": "32",
+      "portMap": {"B_q1": "DATA"},
+      "ports": ["B_q1"],
       "constraints": [{
           "constraint_type": "pragma interface",
           "mode": "ap_memory",
@@ -332,9 +411,23 @@
       "type": "data",
       "busTypeName": "data",
       "mode": "master",
-      "dataWidth": "20",
+      "dataWidth": "14",
       "portMap": {"C_address0": "DATA"},
       "ports": ["C_address0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "C"
+        }]
+    },
+    "C_address1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "14",
+      "portMap": {"C_address1": "DATA"},
+      "ports": ["C_address1"],
       "constraints": [{
           "constraint_type": "pragma interface",
           "mode": "ap_memory",
@@ -349,6 +442,20 @@
       "dataWidth": "32",
       "portMap": {"C_d0": "DATA"},
       "ports": ["C_d0"],
+      "constraints": [{
+          "constraint_type": "pragma interface",
+          "mode": "ap_memory",
+          "register_option": "0",
+          "argName": "C"
+        }]
+    },
+    "C_d1": {
+      "type": "data",
+      "busTypeName": "data",
+      "mode": "master",
+      "dataWidth": "32",
+      "portMap": {"C_d1": "DATA"},
+      "ports": ["C_d1"],
       "constraints": [{
           "constraint_type": "pragma interface",
           "mode": "ap_memory",
@@ -398,7 +505,7 @@
     },
     "C_address0": {
       "dir": "out",
-      "width": "20"
+      "width": "14"
     },
     "C_ce0": {
       "dir": "out",
@@ -416,9 +523,25 @@
       "dir": "in",
       "width": "32"
     },
+    "C_address1": {
+      "dir": "out",
+      "width": "14"
+    },
+    "C_ce1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "C_we1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "C_d1": {
+      "dir": "out",
+      "width": "32"
+    },
     "A_address0": {
       "dir": "out",
-      "width": "20"
+      "width": "14"
     },
     "A_ce0": {
       "dir": "out",
@@ -430,13 +553,25 @@
     },
     "B_address0": {
       "dir": "out",
-      "width": "20"
+      "width": "14"
     },
     "B_ce0": {
       "dir": "out",
       "width": "1"
     },
     "B_q0": {
+      "dir": "in",
+      "width": "32"
+    },
+    "B_address1": {
+      "dir": "out",
+      "width": "14"
+    },
+    "B_ce1": {
+      "dir": "out",
+      "width": "1"
+    },
+    "B_q1": {
       "dir": "in",
       "width": "32"
     },
@@ -460,84 +595,61 @@
       }},
     "Metrics": {"mm": {
         "Latency": {
-          "LatencyBest": "11836339201",
-          "LatencyAvg": "11836339201",
-          "LatencyWorst": "11836339201",
-          "PipelineII": "11836339202",
+          "LatencyBest": "11675649",
+          "LatencyAvg": "11675649",
+          "LatencyWorst": "11675649",
+          "PipelineII": "11675650",
           "PipelineDepth": "",
           "PipelineType": "none"
         },
         "Timing": {
-          "Target": "3.00",
-          "Uncertainty": "0.81",
-          "Estimate": "3.212"
+          "Target": "3.30",
+          "Uncertainty": "0.89",
+          "Estimate": "2.967"
         },
         "Loops": [{
             "Name": "OUTER_LOOP",
-            "TripCount": "1024",
-            "Latency": "11836339200",
+            "TripCount": "128",
+            "Latency": "11675648",
             "PipelineII": "",
-            "PipelineDepth": "11558925",
+            "PipelineDepth": "91216",
             "Loops": [
               {
                 "Name": "LOAD_LOOP_A",
-                "TripCount": "1024",
-                "Latency": "1025",
+                "TripCount": "128",
+                "Latency": "128",
                 "PipelineII": "1",
-                "PipelineDepth": "3"
+                "PipelineDepth": "2"
               },
               {
                 "Name": "LOAD_LOOP_C",
-                "TripCount": "1024",
-                "Latency": "1030",
+                "TripCount": "128",
+                "Latency": "134",
                 "PipelineII": "1",
-                "PipelineDepth": "8"
+                "PipelineDepth": "7"
               },
               {
                 "Name": "INNER_LOOP",
-                "TripCount": "1024",
-                "Latency": "11556864",
+                "TripCount": "128",
+                "Latency": "90880",
                 "PipelineII": "",
-                "PipelineDepth": "11286",
-                "Loops": [
-                  {
-                    "Name": "LOAD_LOOP_B",
-                    "TripCount": "1024",
-                    "Latency": "1025",
-                    "PipelineII": "1",
-                    "PipelineDepth": "3"
-                  },
-                  {
-                    "Name": "COMPUTE_LOOP",
-                    "TripCount": "1024",
-                    "Latency": "9228",
-                    "PipelineII": "9",
-                    "PipelineDepth": "22"
-                  },
-                  {
-                    "Name": "STORE_LOOP",
-                    "TripCount": "1024",
-                    "Latency": "1025",
-                    "PipelineII": "1",
-                    "PipelineDepth": "3"
-                  }
-                ]
+                "PipelineDepth": "710"
               }
             ]
           }],
         "Area": {
-          "BRAM_18K": "6",
+          "BRAM_18K": "0",
           "AVAIL_BRAM": "2688",
-          "UTIL_BRAM": "~0",
-          "DSP": "5",
+          "UTIL_BRAM": "0",
+          "DSP": "57",
           "AVAIL_DSP": "5952",
           "UTIL_DSP": "~0",
-          "FF": "1274",
+          "FF": "30359",
           "AVAIL_FF": "1743360",
-          "UTIL_FF": "~0",
-          "LUT": "1162",
+          "UTIL_FF": "1",
+          "LUT": "17457",
           "AVAIL_LUT": "871680",
-          "UTIL_LUT": "~0",
+          "UTIL_LUT": "2",
           "URAM": "0",
           "AVAIL_URAM": "640",
           "UTIL_URAM": "0"
@@ -547,7 +659,7 @@
   "GenerateBdFiles": "0",
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2022-10-15 01:04:14 PDT",
+    "Time": "2022-10-15 14:10:14 PDT",
     "ToolName": "vivado_hls",
     "ToolVersion": "2020.2.2"
   }

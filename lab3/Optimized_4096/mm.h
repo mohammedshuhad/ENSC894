@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define dimension 1024
+#define dimension 128
 #define NI dimension
 #define NJ dimension
 #define NK dimension

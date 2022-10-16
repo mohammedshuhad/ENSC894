@@ -13,7 +13,7 @@
         <library value="xilinx/virtexuplus/virtexuplus" name="DefaultPlatform"/>
     </libraryList>
     <clockList>
-        <clock name="default" period="3" default="false"/>
+        <clock name="default" period="3.3" default="false"/>
     </clockList>
 </AutoPilot:solution>
 

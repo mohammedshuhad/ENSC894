@@ -2609,71 +2609,79 @@ using std::wctomb;
 
 
 
-__attribute__((sdx_kernel("mm", 0))) void mm(float C[1024*1024], float A[1024*1024], float B[1024*1024], float alpha, float beta);
+__attribute__((sdx_kernel("mm", 0))) void mm(float C[128*128], float A[128*128], float B[128*128], float alpha, float beta);
 # 2 "mm.cpp" 2
 
-void load_A(float A[1024*1024], float A_buff[1024],int i)
+void load_A(float A[128*128], float A_buff[128],int i)
 {
  int j;
- LOAD_LOOP_A: for(j=0;j<1024;j++)
+ LOAD_LOOP_A: for(j=0;j<128;j++)
  {
-  A_buff[j] = A[i*1024 + j];
+#pragma HLS pipeline II=1
+ A_buff[j] = A[i*128 + j];
  }
 }
 
-void load_B(float B[1024*1024], float B_buff[1024],int i)
+void load_B(float B[128*128], float B_buff[128],int i)
 {
  int j;
 
- LOAD_LOOP_B: for(j=0;j<1024;j++)
+ LOAD_LOOP_B: for(j=0;j<128;j++)
  {
-  B_buff[j] = B[j*1024 + i];
+#pragma HLS pipeline II=1
+ B_buff[j] = B[j*128 + i];
  }
 }
 
-void load_C(float C[1024*1024], float C_buff[1024],int i,float beta)
+void load_C(float C[128*128], float C_buff[128],int i,float beta)
 {
  int j;
- LOAD_LOOP_C: for(j=0;j<1024;j++)
+ LOAD_LOOP_C: for(j=0;j<128;j++)
  {
-  C_buff[j] = C[i*1024 + j] * beta;
+#pragma HLS pipeline II=1
+#pragma HLS bind_op variable = C_buff[j] op = mul impl = dsp
+ C_buff[j] = C[i*128 + j] * beta;
  }
 }
 
-void store(float C_buff[1024], float C[1024*1024],int i)
+void store(float C_buff[128], float C[128*128],int i)
 {
  int j;
- STORE_LOOP: for(j=0;j<1024;j++)
+ STORE_LOOP: for(j=0;j<128;j++)
  {
-  C[i*1024 + j]=C_buff[j];
+#pragma HLS pipeline II=1
+ C[i*128 + j]=C_buff[j];
  }
 }
 
-void compute(float A_buff[1024], float B_buff[1024],float C_buff[1024],int i,int j, float alpha)
+void compute(float A_buff[128], float B_buff[128],float C_buff[128],int i,int j, float alpha)
 {
  int k;
- COMPUTE_LOOP: for(k=0;k<1024;k++)
+ COMPUTE_LOOP: for(k=0;k<128;k++)
  {
-  C_buff[j]+= alpha * A_buff[k] * B_buff[k];
+#pragma HLS bind_op variable = C_buff[j] op = mul impl = dsp
+ C_buff[j]+= alpha * A_buff[k] * B_buff[k];
  }
 }
 
-__attribute__((sdx_kernel("mm", 0))) void mm(float C[1024*1024], float A[1024*1024], float B[1024*1024], float alpha, float beta)
-{_ssdm_SpecArrayDimSize(C, 1048576);_ssdm_SpecArrayDimSize(A, 1048576);_ssdm_SpecArrayDimSize(B, 1048576);
+__attribute__((sdx_kernel("mm", 0))) void mm(float C[128*128], float A[128*128], float B[128*128], float alpha, float beta)
+{_ssdm_SpecArrayDimSize(C, 16384);_ssdm_SpecArrayDimSize(A, 16384);_ssdm_SpecArrayDimSize(B, 16384);
 #pragma HLS TOP name=mm
-# 50 "mm.cpp"
+# 56 "mm.cpp"
 
  int i, j, k;
- float A_buff[1024], B_buff[1024], C_buff[1024];
+ float A_buff[128], B_buff[128], C_buff[128];
 
 
-OUTER_LOOP: for(i=0;i<1024;i++)
+OUTER_LOOP: for(i=0;i<128;i++)
 {
  load_A(A,A_buff,i);
  load_C(C,C_buff,i,beta);
- INNER_LOOP:for(j=0;j<1024;j++)
+#pragma HLS array_partition variable = C_buff complete dim = 0
+ INNER_LOOP:for(j=0;j<128;j++)
  {
-  load_B(B,B_buff,j);
+#pragma HLS pipeline II=1
+ load_B(B,B_buff,j);
   compute(A_buff, B_buff, C_buff, i,j,alpha);
   store(C_buff,C,i);
  }

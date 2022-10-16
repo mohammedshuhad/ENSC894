@@ -36,10 +36,10 @@ extern "C" void mm(int*, int*, int*, float, float);
 extern "C" void apatb_mm_hw(volatile void * __xlx_apatb_param_C, volatile void * __xlx_apatb_param_A, volatile void * __xlx_apatb_param_B, float __xlx_apatb_param_alpha, float __xlx_apatb_param_beta) {
   // Collect __xlx_C__tmp_vec
   vector<sc_bv<32> >__xlx_C__tmp_vec;
-  for (int j = 0, e = 1048576; j != e; ++j) {
+  for (int j = 0, e = 16384; j != e; ++j) {
     __xlx_C__tmp_vec.push_back(((int*)__xlx_apatb_param_C)[j]);
   }
-  int __xlx_size_param_C = 1048576;
+  int __xlx_size_param_C = 16384;
   int __xlx_offset_param_C = 0;
   int __xlx_offset_byte_param_C = 0*4;
   int* __xlx_C__input_buffer= new int[__xlx_C__tmp_vec.size()];
@@ -48,10 +48,10 @@ extern "C" void apatb_mm_hw(volatile void * __xlx_apatb_param_C, volatile void *
   }
   // Collect __xlx_A__tmp_vec
   vector<sc_bv<32> >__xlx_A__tmp_vec;
-  for (int j = 0, e = 1048576; j != e; ++j) {
+  for (int j = 0, e = 16384; j != e; ++j) {
     __xlx_A__tmp_vec.push_back(((int*)__xlx_apatb_param_A)[j]);
   }
-  int __xlx_size_param_A = 1048576;
+  int __xlx_size_param_A = 16384;
   int __xlx_offset_param_A = 0;
   int __xlx_offset_byte_param_A = 0*4;
   int* __xlx_A__input_buffer= new int[__xlx_A__tmp_vec.size()];
@@ -60,10 +60,10 @@ extern "C" void apatb_mm_hw(volatile void * __xlx_apatb_param_C, volatile void *
   }
   // Collect __xlx_B__tmp_vec
   vector<sc_bv<32> >__xlx_B__tmp_vec;
-  for (int j = 0, e = 1048576; j != e; ++j) {
+  for (int j = 0, e = 16384; j != e; ++j) {
     __xlx_B__tmp_vec.push_back(((int*)__xlx_apatb_param_B)[j]);
   }
-  int __xlx_size_param_B = 1048576;
+  int __xlx_size_param_B = 16384;
   int __xlx_offset_param_B = 0;
   int __xlx_offset_byte_param_B = 0*4;
   int* __xlx_B__input_buffer= new int[__xlx_B__tmp_vec.size()];
