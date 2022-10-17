@@ -1,75 +1,91 @@
 #include "mm.h"
 
-void load_A(float A[NI*NK], float A_buff[NK],int i)
+void load_A(float A[NI*NK], float A_buff[NK*N],int i)
 {      
-	int j;
-	LOAD_LOOP_A: for(j=0;j<NK;j++)
-	{
-		#pragma HLS pipeline II=1
-		A_buff[j] = A[i*NK + j]; 
-	}
+    ROW_LOOP_A: for (int k = 0 ; k < N ; k++)
+    {
+		#pragma HLS pipeline II = 1
+        COPY_LOOP_A: for(int j=0;j<NK;j++)
+        {   
+        A_buff[k*NK + j] = A[i*NK + k*NK + j]; 
+        }
+    }
 }
 
-void load_B(float B[NK*NJ], float B_buff[NJ],int i)
+void load_B(float B[NK*NJ], float B_buff[NJ*N],int j)
 {      
-	int j;
-	//column is extracted
-	LOAD_LOOP_B: for(j=0;j<NK;j++)
-	{
-		#pragma HLS pipeline II=1
-		B_buff[j] = B[j*NJ + i]; 
-	}
+    COLUMN_LOOP_B:for(int jj=0;jj<N;jj++,j++)
+    {
+		#pragma HLS pipeline II = 1
+        //all elements of #jj column is extracted
+        COPY_LOOP_B: for(int k=0;k<NK;k++)
+        {
+        B_buff[jj*NJ + k] = B[k*NJ + j]; 
+        }
+    }
 }
 
-void load_C(float C[NI*NJ], float C_buff[NJ],int i,float beta)
+void load_C(float C[NI*NJ], float C_buff[NJ*N],int i,float beta)
 {      
-	int j;
-	LOAD_LOOP_C: for(j=0;j<NJ;j++)
-	{
-		#pragma HLS pipeline II=1
-		#pragma HLS bind_op variable = C_buff[j] op = mul impl = dsp
-		C_buff[j] = C[i*NJ + j] * beta; 
-	}
+    int j;
+    ROW_LOOP_C: for (int k = 0 ; k < N ; k++)
+    {
+		#pragma HLS pipeline II = 1
+        COPY_LOOP_C: for(j=0;j<NJ;j++)
+        {
+            C_buff[k*NJ + j] = C[i*NJ + k*NJ + j] * beta; 
+        }
+    }
 }
 		       
-void store(float C_buff[NJ], float C[NI*NJ],int i)
+void store(float C_buff[NJ*N], float C[NI*NJ],int i)
 {
-	int j;
-	STORE_LOOP: for(j=0;j<NJ;j++)
-	{
-		#pragma HLS pipeline II=1
-		C[i*NI + j]=C_buff[j];
-	}
+    int j;
+	STORE_LOOP: for(j=0;j<NJ*N;j++)
+    {
+		#pragma HLS pipeline II = 1
+        C[i*NJ + j]=C_buff[j]; 
+    }
+
 }
 
-void compute(float A_buff[NK], float B_buff[NJ],float C_buff[NJ],int i,int j, float alpha)
+void compute(float A_buff[NK*N], float B_buff[NJ*N],float C_buff[NJ*N], int j, float alpha)
 {
-	int k;
-	COMPUTE_LOOP: for(k=0;k<NK;k++)
-	{
-		#pragma HLS bind_op variable = C_buff[j] op = mul impl = dsp
-		C_buff[j]+= alpha * A_buff[k] * B_buff[k];
-	}
+    int b_column = 0;
+    float C_firstRow, A_firstRow, B_ColumnElement;
+    float C_SecondRow, A_secondRow;
+	int p = 0;
+    //TODO : figure out the currect order of loop, i think it wouldnt matter in rtl impl, maybe wit blocking
+	// #pragma HLS array_partition variable = A_buff block factor = 16
+	// #pragma HLS array_partition variable = B_buff block factor = 16
+	// #pragma HLS array_partition variable = C_buff block factor = 16
+    OUTPUT_ITERATOR: for(int p = 0 ; p < N ; p++)
+    {
+        ROW_ITERATOR: for(int k = 0 ; k < NK ; k ++)
+        {
+			// #pragma HLS unroll factor = 16
+            TILE_ITERATOR : for(int q = 0 ; q < N ; q++)
+            {
+            C_buff[q*NJ + p + j] += alpha * A_buff[q*NJ + k] * B_buff[b_column*NK + k];
+            }
+        }
+        b_column++;
+    }
 }
 
 void mm(float C[NI*NJ], float A[NI*NK], float B[NK*NJ], float alpha, float beta)
 {
-	int i, j, k;
-	float A_buff[NK], B_buff[NJ], C_buff[NJ];
-
-//To fetch one row of A and one column of B at a time - total number of iterations needed NI * NJ
-OUTER_LOOP: for(i=0;i<NI;i++)
-{
-	load_A(A,A_buff,i);
-	load_C(C,C_buff,i,beta);
-	#pragma HLS array_partition variable = C_buff complete dim = 0
-	INNER_LOOP:for(j=0;j<NJ;j++)
-	{
-		#pragma HLS pipeline II=1
-		load_B(B,B_buff,j);
-		compute(A_buff, B_buff, C_buff, i,j,alpha);
-		store(C_buff,C,i);
-	}
-}
-
+    int i, j, k, jj;
+    float A_buff[NK*N], B_buff[NJ*N], C_buff[NJ*N];
+    OUTER_LOOP: for(i=0;i<NI;i+= N)
+    {	     
+        load_A(A,A_buff,i);
+        load_C(C,C_buff,i,beta);
+        INNER_LOOP:for(j=0; j<NJ ; j+=N)
+        {	
+            load_B(B,B_buff,j); 
+            compute(A_buff, B_buff, C_buff,j,alpha);
+        }
+        store(C_buff,C,i);                                				 
+    }		       
 }

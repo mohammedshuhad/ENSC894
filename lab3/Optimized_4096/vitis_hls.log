@@ -7,7 +7,7 @@
 source /cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'msa325' on host 'ensc-mmc-13.engineering.sfu.ca' (Linux_x86_64 version 5.4.0-125-generic) on Sat Oct 15 13:43:09 PDT 2022
+INFO: [HLS 200-10] For user 'msa325' on host 'ensc-mmc-13.engineering.sfu.ca' (Linux_x86_64 version 5.4.0-125-generic) on Mon Oct 17 16:54:40 PDT 2022
 INFO: [HLS 200-10] On os Ubuntu 18.04.6 LTS
 INFO: [HLS 200-10] In directory '/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096'
 Sourcing Tcl script 'run_hls.tcl'
@@ -36,105 +36,21 @@ INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
 TEST PASSED!
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.54 seconds. CPU system time: 0.36 seconds. Elapsed time: 0.57 seconds; current allocated memory: 211.848 MB.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.68 seconds. CPU system time: 0.4 seconds. Elapsed time: 0.59 seconds; current allocated memory: 195.849 MB.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 212.068 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 196.069 MB.
 INFO: [HLS 200-10] Analyzing design file 'mm.cpp' ... 
-WARNING: [HLS 207-5301] unused parameter 'i': mm.cpp:45:73
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.2 seconds. CPU system time: 0.21 seconds. Elapsed time: 0.55 seconds; current allocated memory: 213.222 MB.
-INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 214-178] Inlining function 'load_A(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:56:0)
-INFO: [HLS 214-178] Inlining function 'load_C(float*, float*, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:56:0)
-INFO: [HLS 214-178] Inlining function 'load_B(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:56:0)
-INFO: [HLS 214-178] Inlining function 'compute(float*, float*, float*, int, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:56:0)
-INFO: [HLS 214-178] Inlining function 'store(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:56:0)
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.38 seconds. CPU system time: 0.34 seconds. Elapsed time: 3.84 seconds; current allocated memory: 215.007 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 215.008 MB.
-INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 216.363 MB.
-INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 215.543 MB.
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'INNER_LOOP' (mm.cpp:57) in function 'mm' for pipelining.
-WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'LOAD_LOOP_B' (mm.cpp:15) because its parent loop or function is pipelined.
-WARNING: [XFORM 203-503] Ignored partial unroll directive for loop 'LOAD_LOOP_B' (mm.cpp:15) because its parent loop or function is pipelined.
-WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'STORE_LOOP' (mm.cpp:37) because its parent loop or function is pipelined.
-WARNING: [XFORM 203-503] Ignored partial unroll directive for loop 'STORE_LOOP' (mm.cpp:37) because its parent loop or function is pipelined.
-INFO: [HLS 200-489] Unrolling loop 'LOAD_LOOP_B' (mm.cpp:15) in function 'mm' completely with a factor of 128.
-INFO: [HLS 200-489] Unrolling loop 'COMPUTE_LOOP' (mm.cpp:47) in function 'mm' completely with a factor of 128.
-INFO: [HLS 200-489] Unrolling loop 'STORE_LOOP' (mm.cpp:37) in function 'mm' completely with a factor of 128.
-WARNING: [HLS 200-914] Completely partitioning array 'C_buff' (mm.cpp:58) accessed through non-constant indices on dimension 1, which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
-Resolution: For help on HLS 200-914 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-914.html
-INFO: [XFORM 203-101] Partitioning array 'C_buff' (mm.cpp:58) in dimension 1 completely.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.92 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.93 seconds; current allocated memory: 244.576 MB.
-WARNING: [HLS 200-960] Cannot flatten loop 'OUTER_LOOP' (mm.cpp:57:6) in function 'mm' more than one sub loop.
-Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
-INFO: [HLS 200-472] Inferring partial write operation for 'A_buff' (mm.cpp:9:12)
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1.83 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.84 seconds; current allocated memory: 316.592 MB.
-INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'mm' ...
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'mm' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining loop 'LOAD_LOOP_A'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'LOAD_LOOP_A'
-INFO: [SCHED 204-61] Pipelining loop 'LOAD_LOOP_C'.
-INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'LOAD_LOOP_C'
-INFO: [SCHED 204-61] Pipelining loop 'INNER_LOOP'.
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 130, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 193, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 225, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 241, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 249, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 253, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 255, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-WARNING: [HLS 200-880] The II Violation in module 'mm' (loop 'INNER_LOOP'): Unable to enforce a carried dependence constraint (II = 256, distance = 1, offset = 0) between 'phi' operation ('C_buff[127]') with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51) and 'phi' operation ('C_buff_127_3', mm.cpp:31) with incoming values : ('C_buff[0]', mm.cpp:31) ('C_buff[0]', mm.cpp:51).
-Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-880.html
-INFO: [SCHED 204-61] Unable to satisfy pipeline directive for loop 'INNER_LOOP': unable to pipeline.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1582.63 seconds. CPU system time: 0.07 seconds. Elapsed time: 1582.71 seconds; current allocated memory: 344.880 MB.
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 11.95 seconds. CPU system time: 0.04 seconds. Elapsed time: 11.98 seconds; current allocated memory: 409.794 MB.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'mm' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'mm/C' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'mm/A' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'mm/B' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'mm/alpha' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'mm/beta' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'mm' to 'ap_ctrl_hs'.
-INFO: [RTGEN 206-104] Estimated max fanout for 'mm' is 6490 from HDL expression: (1'b1 == ap_CS_fsm_state81)
-INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_5_no_dsp_1': 1 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_4_max_dsp_1': 19 instance(s).
-INFO: [RTGEN 206-100] Generating core module 'mux_1287_32_1_1': 1 instance(s).
-INFO: [RTGEN 206-100] Finished creating RTL model for 'mm'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 13 seconds. CPU system time: 0.04 seconds. Elapsed time: 13.08 seconds; current allocated memory: 564.928 MB.
-INFO: [RTMG 210-278] Implementing memory 'mm_A_buff_ram (RAM)' using auto RAMs.
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 8.16 seconds. CPU system time: 0.23 seconds. Elapsed time: 8.41 seconds; current allocated memory: 696.303 MB.
-INFO: [VHDL 208-304] Generating VHDL RTL for mm.
-INFO: [VLOG 209-307] Generating Verilog RTL for mm.
-INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
-INFO: [HLS 200-789] **** Estimated Fmax: 337.00 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 1622.21 seconds. CPU system time: 0.95 seconds. Elapsed time: 1623.52 seconds; current allocated memory: 696.523 MB.
-INFO: [HLS 200-112] Total CPU user time: 1624.99 seconds. Total CPU system time: 1.91 seconds. Total elapsed time: 1626.08 seconds; peak allocated memory: 696.303 MB.
-INFO: [Common 17-206] Exiting vitis_hls at Sat Oct 15 14:10:15 2022...
+ERROR: [HLS 214-124] use of undeclared identifier 'N': mm.cpp:59
+ERROR: [HLS 214-124] use of undeclared identifier 'N': mm.cpp:60
+ERROR: [HLS 214-124] use of undeclared identifier 'N': mm.cpp:61
+ERROR: [HLS 214-124] use of undeclared identifier 'N': mm.cpp:66
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0.15 seconds. CPU system time: 0.17 seconds. Elapsed time: 0.42 seconds; current allocated memory: 197.670 MB.
+Syntax check failed in clang-tidy
+    while executing
+"source run_hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [HLS 200-112] Total CPU user time: 2.52 seconds. Total CPU system time: 1.18 seconds. Total elapsed time: 2.5 seconds; peak allocated memory: 197.309 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Mon Oct 17 16:54:43 2022...

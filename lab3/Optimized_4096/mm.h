@@ -9,6 +9,8 @@
 #define NJ dimension
 #define NK dimension
 
+#define N 16
+
 
 void mm(float C[NI*NJ], float A[NI*NK], float B[NK*NJ], float alpha, float beta);
 
