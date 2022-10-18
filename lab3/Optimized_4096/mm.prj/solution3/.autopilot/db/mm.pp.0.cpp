@@ -2662,14 +2662,14 @@ void compute(float A_buff[128*16], float B_buff[128*16],float C_buff[128*16], in
     float C_SecondRow, A_secondRow;
  int p = 0;
 
-#pragma HLS array_partition variable = A_buff block factor = N
-#pragma HLS array_partition variable = B_buff block factor = N
-#pragma HLS array_partition variable = C_buff block factor = N
+#pragma HLS array_partition variable = A_buff block factor = 128
+#pragma HLS array_partition variable = B_buff block factor = 128
+#pragma HLS array_partition variable = C_buff block factor = 128
  OUTPUT_ITERATOR: for(int p = 0 ; p < 16 ; p++)
     {
         ROW_ITERATOR: for(int k = 0 ; k < 128 ; k ++)
         {
-#pragma HLS unroll factor = N
+#pragma HLS unroll factor = 16
  TILE_ITERATOR : for(int q = 0 ; q < 16 ; q++)
             {
             C_buff[q*128 + p + j] += alpha * A_buff[q*128 + k] * B_buff[b_column*128 + k];

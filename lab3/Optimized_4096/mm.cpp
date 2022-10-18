@@ -56,14 +56,14 @@ void compute(float A_buff[NK*N], float B_buff[NJ*N],float C_buff[NJ*N], int j, f
     float C_SecondRow, A_secondRow;
 	int p = 0;
     //TODO : figure out the currect order of loop, i think it wouldnt matter in rtl impl, maybe wit blocking
-	// #pragma HLS array_partition variable = A_buff block factor = 16
-	// #pragma HLS array_partition variable = B_buff block factor = 16
-	// #pragma HLS array_partition variable = C_buff block factor = 16
+	#pragma HLS array_partition variable = A_buff block factor = 16
+	#pragma HLS array_partition variable = B_buff block factor = 16
+	#pragma HLS array_partition variable = C_buff block factor = 16
     OUTPUT_ITERATOR: for(int p = 0 ; p < N ; p++)
     {
         ROW_ITERATOR: for(int k = 0 ; k < NK ; k ++)
         {
-			// #pragma HLS unroll factor = 16
+			#pragma HLS unroll factor = 16
             TILE_ITERATOR : for(int q = 0 ; q < N ; q++)
             {
             C_buff[q*NJ + p + j] += alpha * A_buff[q*NJ + k] * B_buff[b_column*NK + k];
