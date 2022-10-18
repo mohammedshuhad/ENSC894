@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2020.2.2 (64-bit)
+# SW Build 3118627 on Tue Feb  9 05:13:49 MST 2021
+# IP Build 3115676 on Tue Feb  9 10:48:11 MST 2021
+# Start of session at: Mon Oct 17 22:32:11 2022
+# Process ID: 4158
+# Current directory: /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/.autopilot/db/ip_tmp
+# Command line: vivado  -notrace -log vivado.log -mode batch -source run_vivado_gen_ip.tcl
+# Log file: /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/.autopilot/db/ip_tmp/vivado.log
+# Journal file: /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/.autopilot/db/ip_tmp/vivado.jou
+#-----------------------------------------------------------
+source run_vivado_gen_ip.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mm_ap_fadd_5_full_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mm_ap_fadd_5_full_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mm_ap_fmul_2_max_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mm_ap_fmul_2_max_dsp_32'...
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 17 22:32:24 2022...

@@ -6,7 +6,7 @@
         <file name="mm.cpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
     <solutions>
-        <solution name="solution3" status=""/>
+        <solution name="solution2" status=""/>
     </solutions>
     <Simulation argv="">
         <SimFlow name="csim" setup="false" optimizeCompile="false" clean="false" ldflags="" mflags=""/>

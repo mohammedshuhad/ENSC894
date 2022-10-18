@@ -7,26 +7,26 @@
 source /cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'msa325' on host 'ensc-mmc-13.engineering.sfu.ca' (Linux_x86_64 version 5.4.0-125-generic) on Mon Oct 17 18:06:38 PDT 2022
+INFO: [HLS 200-10] For user 'msa325' on host 'ensc-mmc-16.engineering.sfu.ca' (Linux_x86_64 version 5.4.0-125-generic) on Mon Oct 17 22:31:54 PDT 2022
 INFO: [HLS 200-10] On os Ubuntu 18.04.6 LTS
 INFO: [HLS 200-10] In directory '/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096'
 Sourcing Tcl script 'run_hls.tcl'
 INFO: [HLS 200-1510] Running: open_project mm.prj -reset 
 INFO: [HLS 200-10] Opening and resetting project '/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj'.
-WARNING: [HLS 200-40] No /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution3/solution3.aps file found.
+WARNING: [HLS 200-40] No /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/solution2.aps file found.
 INFO: [HLS 200-1510] Running: set_top mm 
 INFO: [HLS 200-1510] Running: add_files mm.cpp 
 INFO: [HLS 200-10] Adding design file 'mm.cpp' to the project
 INFO: [HLS 200-1510] Running: add_files -tb mm_test.cpp 
 INFO: [HLS 200-10] Adding test bench file 'mm_test.cpp' to the project
-INFO: [HLS 200-1510] Running: open_solution solution3 
-INFO: [HLS 200-10] Creating and opening solution '/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution3'.
+INFO: [HLS 200-1510] Running: open_solution solution2 
+INFO: [HLS 200-10] Creating and opening solution '/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2'.
 INFO: [HLS 200-1505] Using default flow_target 'vivado'
 Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
 INFO: [HLS 200-1510] Running: set_part xcu50-fsvh2104-2-e 
 INFO: [HLS 200-10] Setting target device to 'xcu50-fsvh2104-2-e'
-INFO: [HLS 200-1510] Running: create_clock -period 3.3 
-INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.3ns.
+INFO: [HLS 200-1510] Running: create_clock -period 3.33 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33ns.
 INFO: [HLS 200-1510] Running: csim_design 
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
@@ -36,157 +36,497 @@ INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
 TEST PASSED!
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.65 seconds. CPU system time: 0.39 seconds. Elapsed time: 0.56 seconds; current allocated memory: 195.849 MB.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.53 seconds. CPU system time: 0.35 seconds. Elapsed time: 0.54 seconds; current allocated memory: 195.848 MB.
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 196.069 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 196.068 MB.
 INFO: [HLS 200-10] Analyzing design file 'mm.cpp' ... 
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.17 seconds. CPU system time: 0.2 seconds. Elapsed time: 0.5 seconds; current allocated memory: 196.703 MB.
+WARNING: [HLS 207-1017] unknown pragma ignored: mm.cpp:21:9
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.16 seconds. CPU system time: 0.26 seconds. Elapsed time: 0.65 seconds; current allocated memory: 197.192 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
-INFO: [HLS 214-188] Unrolling loop 'ROW_ITERATOR' (mm.cpp:64:23) in function 'compute' partially with a factor of 16 (mm.cpp:64:23)
-INFO: [HLS 214-178] Inlining function 'store(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:77:0)
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.93 seconds. CPU system time: 0.32 seconds. Elapsed time: 4.34 seconds; current allocated memory: 199.591 MB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 199.592 MB.
+INFO: [HLS 214-178] Inlining function 'load_A(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:66:0)
+INFO: [HLS 214-178] Inlining function 'load_C(float*, float*, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:66:0)
+INFO: [HLS 214-178] Inlining function 'load_B(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:66:0)
+INFO: [HLS 214-178] Inlining function 'compute(float*, float*, float*, int, float)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:66:0)
+INFO: [HLS 214-178] Inlining function 'store(float*, float*, int)' into 'mm(float*, float*, float*, float, float)' (mm.cpp:66:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.07 seconds. CPU system time: 0.38 seconds. Elapsed time: 3.61 seconds; current allocated memory: 199.040 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 199.041 MB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 201.144 MB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.02 seconds; current allocated memory: 200.482 MB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.06 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 200.609 MB.
-INFO: [XFORM 203-510] Pipelining loop 'ROW_ITERATOR' (mm.cpp:64) in function 'compute' automatically.
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'ROW_ITERATOR' (mm.cpp:64) in function 'compute' for pipelining.
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'COLUMN_LOOP_B' (mm.cpp:15) in function 'load_B' for pipelining.
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'ROW_LOOP_C' (mm.cpp:31) in function 'load_C' for pipelining.
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'ROW_LOOP_A' (mm.cpp:5) in function 'load_A' for pipelining.
-INFO: [HLS 200-489] Unrolling loop 'TILE_ITERATOR' (mm.cpp:67) in function 'compute' completely with a factor of 16.
-INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP_B' (mm.cpp:21) in function 'load_B' completely with a factor of 128.
-INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP_C' (mm.cpp:30) in function 'load_C' completely with a factor of 128.
-INFO: [HLS 200-489] Unrolling loop 'COPY_LOOP_A' (mm.cpp:8) in function 'load_A' completely with a factor of 128.
-INFO: [XFORM 203-101] Partitioning array 'A_buff' (mm.cpp:79) in dimension 1 with a block factor 128.
-INFO: [XFORM 203-101] Partitioning array 'B_buff' (mm.cpp:79) in dimension 1 with a block factor 128.
-INFO: [XFORM 203-101] Partitioning array 'C_buff' (mm.cpp:79) in dimension 1 with a block factor 128.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.0' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.1' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.2' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.3' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.4' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.5' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.6' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.7' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.8' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.9' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.10' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.11' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.12' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.13' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.14' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.15' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.16' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.17' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.18' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.19' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.20' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.21' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.22' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.23' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.24' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.25' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.26' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.27' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.28' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.29' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.30' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.31' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.32' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.33' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.34' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.35' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.36' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.37' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.38' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.39' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.40' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.41' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.42' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.43' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.44' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.45' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.46' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.47' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.48' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.49' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.50' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.51' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.52' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.53' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.54' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.55' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.56' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.57' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.58' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.59' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.60' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.61' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.62' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.63' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.64' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.65' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.66' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.67' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.68' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.69' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.70' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.71' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.72' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.73' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.74' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.75' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.76' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.77' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.78' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.79' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.80' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.81' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.82' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.83' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.84' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.85' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.86' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.87' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.88' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.89' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.90' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.91' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.92' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.93' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.94' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.95' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.96' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.97' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.98' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.99' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.100' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.101' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.102' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.103' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.104' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.105' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.106' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.107' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.108' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.109' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.110' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.111' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.112' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.113' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.114' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.115' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.116' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.117' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.118' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.119' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.120' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.121' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.122' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.123' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.124' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.125' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.126' (mm.cpp:79) automatically.
-INFO: [XFORM 203-102] Partitioning array 'A_buff.127' (mm.cpp:79) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 199.641 MB.
+INFO: [XFORM 203-510] Pipelining loop 'INNER_LOOP' (mm.cpp:67) in function 'mm' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'INNER_LOOP' (mm.cpp:67) in function 'mm' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'MULT_LOOP' (mm.cpp:55) in function 'mm' completely with a factor of 32.
+INFO: [XFORM 203-101] Partitioning array 'A_buff' (mm.cpp:68) in dimension 1 with a block factor 2.
+INFO: [XFORM 203-101] Partitioning array 'B_buff' (mm.cpp:68) in dimension 1 with a cyclic factor 2.
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'A_buff[0]' in function 'mm' (mm.cpp:10:2).
+WARNING: [ANALYSIS 214-31] The program may have out of bound access of array variable 'A_buff[1]' in function 'mm' (mm.cpp:10:2).
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.15 seconds; current allocated memory: 220.716 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'OUTER_LOOP_B' (mm.cpp:15:58) in function 'mm'.
+WARNING: [HLS 200-960] Cannot flatten loop 'COUNT_LOOP' (mm.cpp:67:18) in function 'mm' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+WARNING: [HLS 200-960] Cannot flatten loop 'OUTER_LOOP' (mm.cpp:67:9) in function 'mm' more than one sub loop.
+Resolution: For help on HLS 200-960 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-960.html
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:36:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'C_buff' (mm.cpp:61:15)
+INFO: [HLS 200-472] Inferring partial write operation for 'A_buff[0]' (mm.cpp:10:12)
+INFO: [HLS 200-472] Inferring partial write operation for 'B_buff[0]' (mm.cpp:25:22)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.1 seconds. CPU system time: 0 seconds. Elapsed time: 0.1 seconds; current allocated memory: 214.977 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mm' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'B_buff_1'. Use bind_storage pragma to overwrite if needed.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'B_buff_0'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP_A'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'COPY_LOOP_A'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP_C'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'COPY_LOOP_C'
+INFO: [SCHED 204-61] Pipelining loop 'OUTER_LOOP_B_COPY_LOOP_B'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'OUTER_LOOP_B_COPY_LOOP_B'
+INFO: [SCHED 204-61] Pipelining loop 'INNER_LOOP'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 231, loop 'INNER_LOOP'
+INFO: [SCHED 204-61] Pipelining loop 'COPY_LOOP_STORE'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'COPY_LOOP_STORE'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.91 seconds. CPU system time: 0 seconds. Elapsed time: 0.92 seconds; current allocated memory: 217.133 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.3 seconds. CPU system time: 0 seconds. Elapsed time: 1.31 seconds; current allocated memory: 220.507 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mm' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/C' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/A' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/B' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/alpha' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'mm/beta' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'mm' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-104] Estimated max fanout for 'mm' is 112472 from HDL expression: (1'b0 == ap_block_pp3_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_7_full_dsp_1': 32 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_4_max_dsp_1': 32 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mm'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.35 seconds. CPU system time: 0 seconds. Elapsed time: 1.34 seconds; current allocated memory: 232.483 MB.
+INFO: [RTMG 210-278] Implementing memory 'mm_A_buff_0_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mm_B_buff_0_ram (RAM_1WnR)' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mm_C_buff_ram (RAM)' using auto RAMs.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 2.97 seconds. CPU system time: 0.03 seconds. Elapsed time: 3.02 seconds; current allocated memory: 247.679 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for mm.
+INFO: [VLOG 209-307] Generating Verilog RTL for mm.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 382.65 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 10.12 seconds. CPU system time: 0.69 seconds. Elapsed time: 11.23 seconds; current allocated memory: 247.885 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vitis_HLS/2020.2/tps/lnx64/gcc-6.2.0/bin/g++"
+   Compiling apatb_mm.cpp
+   Compiling mm.cpp_pre.cpp.tb.cpp
+   Compiling mm_test.cpp_pre.cpp.tb.cpp
+   Compiling apatb_mm_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+TEST PASSED!
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vivado/2020.2/bin
+
+****** Vivado v2020.2.2 (64-bit)
+  **** SW Build 3118627 on Tue Feb  9 05:13:49 MST 2021
+  **** IP Build 3115676 on Tue Feb  9 10:48:11 MST 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source run_vivado_gen_ip.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mm_ap_fadd_5_full_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mm_ap_fadd_5_full_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mm_ap_fmul_2_max_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mm_ap_fmul_2_max_dsp_32'...
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 17 22:32:24 2022...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2020.2.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /cvmfs/rcg.sfu.ca/sw/env/neutral/x86_64/TOOLS/XILINX/V2020.2/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_mm_top glbl -prj mm.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_18 -L floating_point_v7_1_11 --lib ieee_proposed=./ieee_proposed -s mm 
+Multi-threading is on. Using 18 slave threads.
+Determining compilation order of HDL files.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by Xilinx, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+    CPATH
+    LIBRARY_PATH
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ip/xil_defaultlib/mm_ap_fadd_5_full_dsp_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_ap_fadd_5_full_dsp_32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ip/xil_defaultlib/mm_ap_fmul_2_max_dsp_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_ap_fmul_2_max_dsp_32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm_fmul_32ns_32ns_32_4_max_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_fmul_32ns_32ns_32_4_max_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/AESL_automem_C.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_C
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm_B_buff_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_B_buff_0_ram
+INFO: [VRFC 10-311] analyzing module mm_B_buff_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/AESL_FPSim_pkg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ACMP_fadd_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fadd
+INFO: [VRFC 10-311] analyzing module ACMP_fsub_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fsub
+INFO: [VRFC 10-311] analyzing module ACMP_faddfsub_comb
+INFO: [VRFC 10-311] analyzing module ACMP_faddfsub
+INFO: [VRFC 10-311] analyzing module ACMP_fmul_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fmul
+INFO: [VRFC 10-311] analyzing module ACMP_fdiv_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fdiv
+INFO: [VRFC 10-311] analyzing module ACMP_fsqrt_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fsqrt
+INFO: [VRFC 10-311] analyzing module ACMP_frsqrt_comb
+INFO: [VRFC 10-311] analyzing module ACMP_frsqrt
+INFO: [VRFC 10-311] analyzing module ACMP_frecip_comb
+INFO: [VRFC 10-311] analyzing module ACMP_frecip
+INFO: [VRFC 10-311] analyzing module ACMP_flog_comb
+INFO: [VRFC 10-311] analyzing module ACMP_flog
+INFO: [VRFC 10-311] analyzing module ACMP_fexp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fexp
+INFO: [VRFC 10-311] analyzing module ACMP_dadd_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dadd
+INFO: [VRFC 10-311] analyzing module ACMP_dsub_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dsub
+INFO: [VRFC 10-311] analyzing module ACMP_dadddsub_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dadddsub
+INFO: [VRFC 10-311] analyzing module ACMP_dmul_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dmul
+INFO: [VRFC 10-311] analyzing module ACMP_ddiv_comb
+INFO: [VRFC 10-311] analyzing module ACMP_ddiv
+INFO: [VRFC 10-311] analyzing module ACMP_dsqrt_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dsqrt
+INFO: [VRFC 10-311] analyzing module ACMP_drsqrt_comb
+INFO: [VRFC 10-311] analyzing module ACMP_drsqrt
+INFO: [VRFC 10-311] analyzing module ACMP_drecip_comb
+INFO: [VRFC 10-311] analyzing module ACMP_drecip
+INFO: [VRFC 10-311] analyzing module ACMP_dlog_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dlog
+INFO: [VRFC 10-311] analyzing module ACMP_dexp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dexp
+INFO: [VRFC 10-311] analyzing module ACMP_fcmp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fcmp
+INFO: [VRFC 10-311] analyzing module ACMP_dcmp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dcmp
+INFO: [VRFC 10-311] analyzing module ACMP_fptosi_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fptosi
+INFO: [VRFC 10-311] analyzing module ACMP_dptosi_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dptosi
+INFO: [VRFC 10-311] analyzing module ACMP_sitofp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_sitofp
+INFO: [VRFC 10-311] analyzing module ACMP_sitodp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_sitodp
+INFO: [VRFC 10-311] analyzing module ACMP_fptoui_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fptoui
+INFO: [VRFC 10-311] analyzing module ACMP_dptoui_comb
+INFO: [VRFC 10-311] analyzing module ACMP_dptoui
+INFO: [VRFC 10-311] analyzing module ACMP_uitofp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_uitofp
+INFO: [VRFC 10-311] analyzing module ACMP_uitodp_comb
+INFO: [VRFC 10-311] analyzing module ACMP_uitodp
+INFO: [VRFC 10-311] analyzing module ACMP_fpext_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fpext
+INFO: [VRFC 10-311] analyzing module ACMP_fptrunc_comb
+INFO: [VRFC 10-311] analyzing module ACMP_fptrunc
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm_A_buff_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_A_buff_0_ram
+INFO: [VRFC 10-311] analyzing module mm_A_buff_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm_fadd_32ns_32ns_32_7_full_dsp_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_fadd_32ns_32ns_32_7_full_dsp_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/AESL_automem_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_A
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm_C_buff.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mm_C_buff_ram
+INFO: [VRFC 10-311] analyzing module mm_C_buff
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/AESL_automem_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_B
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_mm_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/nodf_module_monitor.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'nodf_module_intf' [nodf_module_interface.sv:4]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_fifo_monitor.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'df_fifo_intf' [df_fifo_interface.sv:4]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/sample_manager.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/dump_file_agent.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/sample_agent.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_process_monitor.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'df_process_intf' [df_process_interface.sv:4]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_process_interface.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'df_process_intf' [/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_process_interface.sv:4]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/csv_file_dump.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/nodf_module_interface.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'nodf_module_intf' [/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/nodf_module_interface.sv:4]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_fifo_interface.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3609] overwriting previous definition of interface 'df_fifo_intf' [/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/df_fifo_interface.sv:4]
+INFO: [VRFC 10-163] Analyzing VHDL file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ieee_FP_pkg/fixed_float_types_c.vhd" into library ieee_proposed
+INFO: [VRFC 10-163] Analyzing VHDL file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ieee_FP_pkg/fixed_pkg_c.vhd" into library ieee_proposed
+INFO: [VRFC 10-163] Analyzing VHDL file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ieee_FP_pkg/float_pkg_c.vhd" into library ieee_proposed
+INFO: [VRFC 10-163] Analyzing VHDL file "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/ieee_FP_pkg/aesl_fp_wrapper.vhd" into library ieee_proposed
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FAdd'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FSub'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FAddFSub'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FMul'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FDiv'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FSqrt'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FRSqrt'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FRecip'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FLog'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FExp'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DAdd'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DSub'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DAddDSub'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DMul'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DDiv'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DSqrt'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DRSqrt'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DRecip'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DLog'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DExp'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_FCmp'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DCmp'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_SPToSI'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DPToSI'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_SIToSP'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_SIToDP'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_SPToUI'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DPToUI'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_UIToSP'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_UIToDP'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_SPToDP'
+INFO: [VRFC 10-3107] analyzing entity 'AESL_WP_DPToSP'
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package floating_point_v7_1_11.floating_point_v7_1_11_viv_comp
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_10.xbip_utils_v3_0_10_pkg
+Compiling package axi_utils_v2_0_6.axi_utils_v2_0_6_pkg
+Compiling package floating_point_v7_1_11.floating_point_v7_1_11_consts
+Compiling package ieee.math_real
+Compiling package floating_point_v7_1_11.floating_point_v7_1_11_exp_table...
+Compiling package mult_gen_v12_0_16.mult_gen_v12_0_16_pkg
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package floating_point_v7_1_11.floating_point_v7_1_11_pkg
+Compiling package floating_point_v7_1_11.flt_utils
+Compiling package xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv_comp
+Compiling package unisim.vcomponents
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.mm_A_buff_0_ram
+Compiling module xil_defaultlib.mm_A_buff_0(DataWidth=32,Address...
+Compiling module xil_defaultlib.mm_B_buff_0_ram
+Compiling module xil_defaultlib.mm_B_buff_0(DataWidth=32,Address...
+Compiling module xil_defaultlib.mm_C_buff_ram
+Compiling module xil_defaultlib.mm_C_buff(DataWidth=32,AddressRa...
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=7,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_11.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=24,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=16,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [delay_default]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,alumodereg=0...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=4,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=48,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=24,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.dsp48e1_wrapper [\dsp48e1_wrapper(c_part="xcu50-f...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(length=2)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=13)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=27)\]
+Compiling architecture synth of entity floating_point_v7_1_11.align_add_dsp48e1_sgl [\align_add_dsp48e1_sgl(c_xdevice...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000001111...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00000000000000000000...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=27,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=5,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.lead_zero_encode_shift [\lead_zero_encode_shift(ab_fw=24...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=3,length=0)\]
+Compiling architecture lut6_v of entity unisim.LUT6 [\LUT6(init="11111110010101001011...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="00010001010111110000...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11101110101000001111...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=2)\]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(adreg=0,alumodereg=0,ca...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=25,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,c_wi...]
+Compiling architecture rtl of entity floating_point_v7_1_11.norm_and_round_dsp48e1_sgl [\norm_and_round_dsp48e1_sgl(c_mu...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="10011001100110011001...]
+Compiling architecture lut5_v of entity unisim.LUT5 [\LUT5(init="11111111000000001111...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=9,length=0)\]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=8,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=9,length=2)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=10)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=4,length=0,fast_inp...]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fde_v of entity unisim.FDE [fde_default]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_11.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(fast_input=true)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_11.compare_gt [\compare_gt(c_xdevicefamily="vir...]
+Compiling architecture synth of entity floating_point_v7_1_11.compare [\compare(c_xdevicefamily="virtex...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=8)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=9)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=2,length=3,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(length=3,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(length=0,fast_input=true)...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=2,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=12,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_add_exp_sp [\flt_add_exp_sp(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=23)\]
+Compiling architecture synth of entity floating_point_v7_1_11.flt_dec_op [\flt_dec_op(c_xdevicefamily="vir...]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_add_dsp [\flt_add_dsp(c_xdevicefamily="vi...]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_add [\flt_add(c_xdevicefamily="virtex...]
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=32,length=0)\]
+Compiling architecture xilinx of entity floating_point_v7_1_11.floating_point_v7_1_11_viv [\floating_point_v7_1_11_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_11.floating_point_v7_1_11 [\floating_point_v7_1_11(c_xdevic...]
+Compiling module xil_defaultlib.mm_ap_fadd_5_full_dsp_32
+Compiling module xil_defaultlib.mm_fadd_32ns_32ns_32_7_full_dsp_...
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=17,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,b_wi...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture rtl of entity floating_point_v7_1_11.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=24,b_wi...]
+Compiling architecture struct of entity floating_point_v7_1_11.fix_mult_dsp48e1_sgl [\fix_mult_dsp48e1_sgl(registers=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.fix_mult [\fix_mult(c_xdevicefamily="virte...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=8,length=0,fast_inp...]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture struct of entity floating_point_v7_1_11.carry_chain [\carry_chain(c_xdevicefamily="vi...]
+Compiling architecture synth of entity floating_point_v7_1_11.compare_eq_im [\compare_eq_im(c_xdevicefamily="...]
+Compiling architecture rtl of entity floating_point_v7_1_11.special_detect [\special_detect(c_xdevicefamily=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=2,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=4,fast_input=true)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=3,length=0,fast_inp...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=14,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_mult_exp [\flt_mult_exp(c_xdevicefamily="v...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,adreg=0,alum...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=30,length=0)\]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_has_ce=1...]
+Compiling architecture rtl of entity floating_point_v7_1_11.delay [\delay(width=18,length=0)\]
+Compiling architecture rtl of entity floating_point_v7_1_11.dsp48e1_wrapper [\dsp48e1_wrapper(a_width=30,b_wi...]
+Compiling architecture struct of entity floating_point_v7_1_11.flt_round_dsp_opt_full [\flt_round_dsp_opt_full(c_xdevic...]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_mult_round [\flt_mult_round(c_xdevicefamily=...]
+Compiling architecture synth of entity floating_point_v7_1_11.flt_dec_op_lat [\flt_dec_op_lat(c_xdevicefamily=...]
+Compiling architecture rtl of entity floating_point_v7_1_11.flt_mult [\flt_mult(c_xdevicefamily="virte...]
+Compiling architecture synth of entity xbip_pipe_v3_0_6.xbip_pipe_v3_0_6_viv [\xbip_pipe_v3_0_6_viv(c_latency=...]
+Compiling architecture xilinx of entity floating_point_v7_1_11.floating_point_v7_1_11_viv [\floating_point_v7_1_11_viv(c_xd...]
+Compiling architecture xilinx of entity floating_point_v7_1_11.floating_point_v7_1_11 [\floating_point_v7_1_11(c_xdevic...]
+Compiling module xil_defaultlib.mm_ap_fmul_2_max_dsp_32
+Compiling module xil_defaultlib.mm_fmul_32ns_32ns_32_4_max_dsp_1...
+Compiling module xil_defaultlib.mm
+Compiling module xil_defaultlib.AESL_automem_C
+Compiling module xil_defaultlib.AESL_automem_A
+Compiling module xil_defaultlib.AESL_automem_B
+Compiling module xil_defaultlib.nodf_module_intf
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_mm_top
+Compiling module work.glbl
+Built simulation snapshot mm
+
+****** Webtalk v2020.2.2 (64-bit)
+  **** SW Build 3118627 on Tue Feb  9 05:13:49 MST 2021
+  **** IP Build 3115676 on Tue Feb  9 10:48:11 MST 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/xsim.dir/mm/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Mon Oct 17 22:33:32 2022...
+
+****** xsim v2020.2.2 (64-bit)
+  **** SW Build 3118627 on Tue Feb  9 05:13:49 MST 2021
+  **** IP Build 3115676 on Tue Feb  9 10:48:11 MST 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/mm/xsim_script.tcl
+# xsim {mm} -autoloadwcfg -tclbatch {mm.tcl}
+Vivado Simulator v2020.2.2
+Time resolution is 1 ps
+source mm.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "109000"
+// RTL Simulation : 1 / 1 [100.00%] @ "226384000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 226396890 ps : File "/local-scratch/localhome/msa325/ensc894/lab3/Optimized_4096/mm.prj/solution2/sim/verilog/mm.autotb.v" Line 443
+run: Time (s): cpu = 00:00:00.37 ; elapsed = 00:00:48 . Memory (MB): peak = 2446.949 ; gain = 0.000 ; free physical = 119875 ; free virtual = 157276
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Oct 17 22:35:10 2022...
+INFO: [COSIM 212-316] Starting C post checking ...
+TEST PASSED!
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 106.28 seconds. CPU system time: 5.47 seconds. Elapsed time: 183.2 seconds; current allocated memory: 251.575 MB.
+INFO: [HLS 200-112] Total CPU user time: 118.84 seconds. Total CPU system time: 7.09 seconds. Total elapsed time: 196.62 seconds; peak allocated memory: 247.679 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Mon Oct 17 22:35:10 2022...
